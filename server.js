@@ -14,11 +14,12 @@ const app = express();
 connectDB();
 app.use(bodyParser.json()); 
 app.use(cors()); 
+app.get('/', (req, res) => {
+  res.send('مرحباً بك في واجهة برمجة التطبيقات الخاصة بي!'); 
+});
+
 app.use('/api', taskRoutes);
 app.use('/api/users', userRoutes);
-app.get("/",(req,res)=>{
-  res.send("hello");
-})
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
